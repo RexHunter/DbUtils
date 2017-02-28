@@ -1,20 +1,33 @@
 package com.gameloft.core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class QueryLoader {
+    private static Logger LOGGER = LogManager.getLogger(QueryLoader.class);
 
+    private static String SQL = ".sql";
+    private String destinationFolder;
+
+    public QueryLoader(String destinationFolder) {
+        this.destinationFolder = destinationFolder;
+    }
     /**
      * Load query from resource file
      */
-    public String loadQuery(String sourcePath) {
-        sourcePath = "sql/" + sourcePath + ".sql";
+    public String loadQuery(String sourcePath) throws QueryFileDoesNotExists {
+        sourcePath = destinationFolder + sourcePath + SQL;
         File file = new File(getClass().getClassLoader().getResource(sourcePath).getFile());
         BufferedReader reader = null;
         String query = "";
+
+        if(!file.exists())
+            throw new QueryFileDoesNotExists(sourcePath);
 
         try {
             reader = new BufferedReader(new FileReader(file));
@@ -24,7 +37,7 @@ public class QueryLoader {
                 query += " " + line;
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
         return query;
     }

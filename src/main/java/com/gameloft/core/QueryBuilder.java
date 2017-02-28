@@ -1,17 +1,13 @@
 package com.gameloft.core;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-public class PreparedQuery {
+public class QueryBuilder {
     private String query;
-    private Connection connection;
 
-    public PreparedQuery(Connection connection, String query) {
+    public QueryBuilder(String query) {
         this.query = query;
-        this.connection = connection;
     }
 
     /**
@@ -54,9 +50,9 @@ public class PreparedQuery {
     }
 
     /**
-     * Generate PreparedStatement by query
+     * Build query
      */
-    public PreparedStatement execute() throws SQLException {
-        return connection.prepareStatement(this.query);
+    public String build() throws SQLException {
+        return this.query;
     }
 }
