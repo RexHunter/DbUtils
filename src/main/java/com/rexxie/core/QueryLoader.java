@@ -1,4 +1,4 @@
-package com.gameloft.core;
+package com.rexxie.core;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,7 +31,6 @@ public class QueryLoader {
 
         try {
             reader = new BufferedReader(new FileReader(file));
-
             String line;
             while ((line = reader.readLine()) != null) {
                 query += " " + line;

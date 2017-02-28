@@ -1,4 +1,4 @@
-package com.gameloft.core;
+package com.rexxie.core;
 
 public class QueryFileDoesNotExists extends Exception {
 

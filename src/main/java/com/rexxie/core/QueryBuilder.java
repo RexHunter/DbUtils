@@ -1,4 +1,4 @@
-package com.gameloft.core;
+package com.rexxie.core;
 
 import java.sql.SQLException;
 import java.util.Arrays;
