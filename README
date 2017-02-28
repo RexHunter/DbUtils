@@ -18,7 +18,7 @@ For example, your query in folder - "/resource/my.sql"
 QueryLoader loader = new QueryLoader();
 String query = loader.loadQuery("my");
 
-In other way if your putted in investment folder - "/resource/sql-folder/my.sql"
+In other way if your query putted in investment folder - "/resource/sql-folder/my.sql"
 
 //Example #1
 QueryLoader loader = new QueryLoader("sql-folder");
