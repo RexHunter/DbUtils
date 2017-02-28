@@ -1,0 +1,29 @@
+That library allow you to write sql queries more easier.
+
+QueryBuilder - class that allow to easy set value into your sql query
+
+String sql = "SELECT * FROM table_name WHERE id = :id"
+Integer id = 1;
+QueryBuilder qb = new QueryBuilder(sql);
+qb.setInt(":id", id);
+
+//This will replace :id value from query-string and set value that you want.
+//SELECT * FROM table_name WHERE id = 1
+
+
+QueryLoader - class that allow you to load sql queries from resource folder.
+
+For example, your query in folder - "/resource/my.sql"
+
+QueryLoader loader = new QueryLoader();
+String query = loader.loadQuery("my");
+
+In other way if your putted in investment folder - "/resource/sql-folder/my.sql"
+
+//Example #1
+QueryLoader loader = new QueryLoader("sql-folder");
+String query = loader.loadQuery("my");
+
+//Example #2
+QueryLoader loader = new QueryLoader();
+String query = loader.loadQuery("sql-folder/my");
