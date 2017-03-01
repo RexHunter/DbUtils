@@ -17,17 +17,21 @@ public class QueryLoader {
     public QueryLoader(String destinationFolder) {
         this.destinationFolder = destinationFolder;
     }
+
+    public QueryLoader() {
+    }
+
     /**
      * Load query from resource file
      */
-    public String loadQuery(String sourcePath) throws QueryFileDoesNotExists {
+    public String loadQueryFromResourceFile(String sourcePath) throws QueryFileDoesNotExistsException {
         sourcePath = destinationFolder + sourcePath + SQL;
         File file = new File(getClass().getClassLoader().getResource(sourcePath).getFile());
         BufferedReader reader = null;
         String query = "";
 
         if(!file.exists())
-            throw new QueryFileDoesNotExists(sourcePath);
+            throw new QueryFileDoesNotExistsException(sourcePath);
 
         try {
             reader = new BufferedReader(new FileReader(file));

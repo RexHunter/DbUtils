@@ -3,10 +3,10 @@ package com.rexxie.core;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-public class QueryBuilder {
+public class QueryEditor {
     private String query;
 
-    public QueryBuilder(String query) {
+    public QueryEditor(String query) {
         this.query = query;
     }
 
